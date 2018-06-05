@@ -13,7 +13,13 @@ export default class BoardSquare extends Component {
 
   constructor(props){
     super(props)
-    this.state={hasChecker: this.props.hasChecker}
+    this.state={hasChecker: this.props.hasChecker,
+                checkerColor: this.props.x<3?'black':'red'}
+    this.handleDrop = this.handleDrop.bind(this)
+  }
+
+  handleDrop(){
+    this.setState({hasChecker: false})
   }
 
   onDragOver(e){
@@ -23,16 +29,8 @@ export default class BoardSquare extends Component {
   }
 
   onDrop(e, x, y){
-    let prevX = e.dataTransfer.getData("x")
-    let prevY = e.dataTransfer.getData("y")
-    if(prevX !== this.props.x || prevY !== this.props.y){
-      e.dataTransfer.setData("x", x);
-      e.dataTransfer.setData("y", y);
-      this.setState({hasChecker: true})
-    }
-    else{
-      this.setState({hasChecker: false})
-    }
+    this.setState({hasChecker: true,
+                   checkerColor: e.dataTransfer.getData("color")})
   }
 
   componentDidMount(){
@@ -42,7 +40,7 @@ export default class BoardSquare extends Component {
   render(){
     let checker;
     if(this.state.hasChecker){
-      checker = <Checker color={this.props.x<3?'black':'red'} x={this.props.x} y={this.props.y} />
+      checker = <Checker color={this.state.checkerColor} onDrop={this.handleDrop} />
     }
     else{
       checker = null;
@@ -53,7 +51,7 @@ export default class BoardSquare extends Component {
          onDrop={(e)=>this.onDrop(e, this.props.x, this.props.y)}
          style={{backgroundColor: this.props.color, left: 12.5*this.props.x + "vmin", top: 12.5*this.props.y + "vmin"}}
       >
-        <span>{checker}</span>
+        {checker}
       </div>
     )
   }
