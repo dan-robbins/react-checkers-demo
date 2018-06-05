@@ -1,0 +1,9 @@
+.drop-box {
+  width: 12.5vmin;
+  height: 12.5vmin;
+  background-color: #ff00e5;
+  display: inline-block;
+  left: 0;
+  top: 0;
+  font-size: 0;
+}
