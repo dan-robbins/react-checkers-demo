@@ -1,0 +1,11 @@
+.checker {
+  background-color: #ff00e5;
+  display: inline-block;
+  left: 5%;
+  top: 5%;
+  font-size: 0;
+  width: 90%;
+  height: 90%;
+  margin: 0 auto;
+  border-radius: 50%;
+}

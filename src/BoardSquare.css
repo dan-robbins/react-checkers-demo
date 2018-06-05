@@ -1,8 +1,10 @@
-.drop-box {
+.board-square {
   width: 12.5vmin;
   height: 12.5vmin;
+  text-align: center;
+  vertical-align: middle;
   background-color: #ff00e5;
-  display: inline-block;
+  display: table-cell;
   left: 0;
   top: 0;
   font-size: 0;
