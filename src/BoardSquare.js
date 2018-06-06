@@ -17,6 +17,7 @@ export default class BoardSquare extends Component {
                 checkerColor: this.props.x<3?'black':'red'}
     this.handleDrop = this.handleDrop.bind(this)
     this.pickedUp = this.pickedUp.bind(this)
+    this.onDragStart = this.onDragStart.bind(this)
   }
 
   handleDrop(){
@@ -24,7 +25,7 @@ export default class BoardSquare extends Component {
   }
 
   onDragOver(e){
-    if(this.props.color !== this.props.lightColor){
+    if(this.props.color !== this.props.lightColor && !this.state.hasChecker){
       e.preventDefault();
     }
     else{
@@ -32,8 +33,14 @@ export default class BoardSquare extends Component {
     }
   }
 
+  onDragStart(e){
+    if(!this.state.hasChecker){
+      e.preventDefault();
+    }
+  }
+
   onDrop(e){
-    if(this.props.color !== this.props.lightColor && !this.state.hasChecker){
+    if(this.props.color !== this.props.lightColor && !this.state.hasChecker && e.dataTransfer.getData("color")){
       this.props.movedPiece(true, this.props.x, this.props.y)
       this.setState({hasChecker: true,
                      checkerColor: e.dataTransfer.getData("color")})
@@ -67,6 +74,7 @@ export default class BoardSquare extends Component {
       <div className="board-square"
          onDragOver={(e)=>this.onDragOver(e)}
          onDrop={(e)=>this.onDrop(e)}
+         draggable="false"
          style={{backgroundColor: this.props.color, left: 12.5*this.props.x + "vmin", top: 12.5*this.props.y + "vmin"}}
       >
         {checker}
