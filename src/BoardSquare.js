@@ -17,7 +17,6 @@ export default class BoardSquare extends Component {
                 checkerColor: this.props.x<3?'black':'red'}
     this.handleDrop = this.handleDrop.bind(this)
     this.pickedUp = this.pickedUp.bind(this)
-    this.onDragStart = this.onDragStart.bind(this)
   }
 
   handleDrop(){
@@ -30,12 +29,6 @@ export default class BoardSquare extends Component {
     }
     else{
       this.props.movedPiece(false)
-    }
-  }
-
-  onDragStart(e){
-    if(!this.state.hasChecker){
-      e.preventDefault();
     }
   }
 
