@@ -33,7 +33,7 @@ export default class BoardSquare extends Component {
   }
 
   onDrop(e){
-    if(this.props.color !== this.props.lightColor){
+    if(this.props.color !== this.props.lightColor && !this.state.hasChecker){
       this.props.movedPiece(true, this.props.x, this.props.y)
       this.setState({hasChecker: true,
                      checkerColor: e.dataTransfer.getData("color")})
@@ -46,10 +46,6 @@ export default class BoardSquare extends Component {
 
   pickedUp(){
     this.props.pickedUpFrom(this.props.x, this.props.y)
-  }
-
-  componentDidMount(){
-    document.title = "Checkers";
   }
 
   shouldComponentUpdate(){

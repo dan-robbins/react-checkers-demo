@@ -38,6 +38,10 @@ class CheckersGame extends Component{
         return this.toX === x && this.toY === y
     }
 
+    componentDidMount(){
+        document.title = "Checkers";
+    }
+
     render(){
         let dark = '#006614'
         let light = '#e5e5e5'
