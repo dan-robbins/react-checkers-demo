@@ -11,6 +11,7 @@ class CheckersGame extends Component{
         this.movedPiece = this.movedPiece.bind(this)
         this.didMovePiece = this.didMovePiece.bind(this)
         this.didMoveFrom = this.didMoveFrom.bind(this)
+        this.didMoveTo = this.didMoveTo.bind(this)
         this.pieceMoved = false
     }
 
@@ -19,7 +20,9 @@ class CheckersGame extends Component{
         this.pickedY = y
     }
 
-    movedPiece(moved){
+    movedPiece(moved, x, y){
+        this.toX = x
+        this.toY = y
         this.pieceMoved = moved
     }
 
@@ -27,8 +30,12 @@ class CheckersGame extends Component{
         return this.pieceMoved
     }
 
-    didMoveFrom(x, y){
+    didMoveFrom(x,y){
         return this.pickedX === x && this.pickedY === y
+    }
+
+    didMoveTo(x,y){
+        return this.toX === x && this.toY === y
     }
 
     render(){
@@ -41,26 +48,26 @@ class CheckersGame extends Component{
         for(let i = 0; i < boardSize; i++){
             for(let j = 0; j < boardSize; j++){
                 if(i%2===0 && j%2===0){
-                    board[i][j] = <BoardSquare key={''+i+j} color='#e5e5e5' x={i} y={j} hasChecker={false} pickedUpFrom={this.pickedUpFrom} movedPiece={this.movedPiece} didMovePiece={this.didMovePiece} didMoveFrom={this.didMoveFrom}/>
+                    board[i][j] = <BoardSquare key={''+i+j} color='#e5e5e5' x={i} y={j} hasChecker={false} pickedUpFrom={this.pickedUpFrom} movedPiece={this.movedPiece} didMovePiece={this.didMovePiece} didMoveFrom={this.didMoveFrom} didMoveTo={this.didMoveTo}/>
                 }
                 else if(i%2===0 && j%2===1){
                     if(i<3 || i>4){
-                        board[i][j] = <BoardSquare key={''+i+j} color='#303030' x={i} y={j} hasChecker={true} pickedUpFrom={this.pickedUpFrom} movedPiece={this.movedPiece} didMovePiece={this.didMovePiece} didMoveFrom={this.didMoveFrom}/>
+                        board[i][j] = <BoardSquare key={''+i+j} color='#303030' x={i} y={j} hasChecker={true} pickedUpFrom={this.pickedUpFrom} movedPiece={this.movedPiece} didMovePiece={this.didMovePiece} didMoveFrom={this.didMoveFrom} didMoveTo={this.didMoveTo}/>
                     }
                     else{
-                        board[i][j] = <BoardSquare key={''+i+j} color='#303030' x={i} y={j} hasChecker={false} pickedUpFrom={this.pickedUpFrom} movedPiece={this.movedPiece} didMovePiece={this.didMovePiece} didMoveFrom={this.didMoveFrom}/>
+                        board[i][j] = <BoardSquare key={''+i+j} color='#303030' x={i} y={j} hasChecker={false} pickedUpFrom={this.pickedUpFrom} movedPiece={this.movedPiece} didMovePiece={this.didMovePiece} didMoveFrom={this.didMoveFrom} didMoveTo={this.didMoveTo}/>
                     }
                 }
                 else if(i%2===1 && j%2===0){
                     if(i<3 || i>4){
-                        board[i][j] = <BoardSquare key={''+i+j} color='#303030' x={i} y={j} hasChecker={true} pickedUpFrom={this.pickedUpFrom} movedPiece={this.movedPiece} didMovePiece={this.didMovePiece} didMoveFrom={this.didMoveFrom}/>
+                        board[i][j] = <BoardSquare key={''+i+j} color='#303030' x={i} y={j} hasChecker={true} pickedUpFrom={this.pickedUpFrom} movedPiece={this.movedPiece} didMovePiece={this.didMovePiece} didMoveFrom={this.didMoveFrom} didMoveTo={this.didMoveTo}/>
                     }
                     else{
-                        board[i][j] = <BoardSquare key={''+i+j} color='#303030' x={i} y={j} hasChecker={false} pickedUpFrom={this.pickedUpFrom} movedPiece={this.movedPiece} didMovePiece={this.didMovePiece} didMoveFrom={this.didMoveFrom}/>
+                        board[i][j] = <BoardSquare key={''+i+j} color='#303030' x={i} y={j} hasChecker={false} pickedUpFrom={this.pickedUpFrom} movedPiece={this.movedPiece} didMovePiece={this.didMovePiece} didMoveFrom={this.didMoveFrom} didMoveTo={this.didMoveTo}/>
                     }
                 }
                 else{
-                    board[i][j] = <BoardSquare key={''+i+j} color='#e5e5e5' x={i} y={j} hasChecker={false} pickedUpFrom={this.pickedUpFrom} movedPiece={this.movedPiece}/>
+                    board[i][j] = <BoardSquare key={''+i+j} color='#e5e5e5' x={i} y={j} hasChecker={false} pickedUpFrom={this.pickedUpFrom} movedPiece={this.movedPiece} didMovePiece={this.didMovePiece} didMoveFrom={this.didMoveFrom} didMoveTo={this.didMoveTo}/>
                 }
             }
         }
