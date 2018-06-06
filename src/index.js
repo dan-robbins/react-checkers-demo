@@ -39,6 +39,8 @@ class CheckersGame extends Component{
     }
 
     render(){
+        let dark = '#006614'
+        let light = '#e5e5e5'
         let boardSize = 8
         let board = [];
         for(let i = 0; i < boardSize; i++){
@@ -48,26 +50,26 @@ class CheckersGame extends Component{
         for(let i = 0; i < boardSize; i++){
             for(let j = 0; j < boardSize; j++){
                 if(i%2===0 && j%2===0){
-                    board[i][j] = <BoardSquare key={''+i+j} color='#e5e5e5' x={i} y={j} hasChecker={false} pickedUpFrom={this.pickedUpFrom} movedPiece={this.movedPiece} didMovePiece={this.didMovePiece} didMoveFrom={this.didMoveFrom} didMoveTo={this.didMoveTo}/>
+                    board[i][j] = <BoardSquare key={''+i+j} color={light} x={i} y={j} lightColor={light} hasChecker={false} pickedUpFrom={this.pickedUpFrom} movedPiece={this.movedPiece} didMovePiece={this.didMovePiece} didMoveFrom={this.didMoveFrom} didMoveTo={this.didMoveTo}/>
                 }
                 else if(i%2===0 && j%2===1){
                     if(i<3 || i>4){
-                        board[i][j] = <BoardSquare key={''+i+j} color='#303030' x={i} y={j} hasChecker={true} pickedUpFrom={this.pickedUpFrom} movedPiece={this.movedPiece} didMovePiece={this.didMovePiece} didMoveFrom={this.didMoveFrom} didMoveTo={this.didMoveTo}/>
+                        board[i][j] = <BoardSquare key={''+i+j} color={dark} x={i} y={j} lightColor={light} hasChecker={true} pickedUpFrom={this.pickedUpFrom} movedPiece={this.movedPiece} didMovePiece={this.didMovePiece} didMoveFrom={this.didMoveFrom} didMoveTo={this.didMoveTo}/>
                     }
                     else{
-                        board[i][j] = <BoardSquare key={''+i+j} color='#303030' x={i} y={j} hasChecker={false} pickedUpFrom={this.pickedUpFrom} movedPiece={this.movedPiece} didMovePiece={this.didMovePiece} didMoveFrom={this.didMoveFrom} didMoveTo={this.didMoveTo}/>
+                        board[i][j] = <BoardSquare key={''+i+j} color={dark} x={i} y={j} lightColor={light} hasChecker={false} pickedUpFrom={this.pickedUpFrom} movedPiece={this.movedPiece} didMovePiece={this.didMovePiece} didMoveFrom={this.didMoveFrom} didMoveTo={this.didMoveTo}/>
                     }
                 }
                 else if(i%2===1 && j%2===0){
                     if(i<3 || i>4){
-                        board[i][j] = <BoardSquare key={''+i+j} color='#303030' x={i} y={j} hasChecker={true} pickedUpFrom={this.pickedUpFrom} movedPiece={this.movedPiece} didMovePiece={this.didMovePiece} didMoveFrom={this.didMoveFrom} didMoveTo={this.didMoveTo}/>
+                        board[i][j] = <BoardSquare key={''+i+j} color={dark} x={i} y={j} lightColor={light} hasChecker={true} pickedUpFrom={this.pickedUpFrom} movedPiece={this.movedPiece} didMovePiece={this.didMovePiece} didMoveFrom={this.didMoveFrom} didMoveTo={this.didMoveTo}/>
                     }
                     else{
-                        board[i][j] = <BoardSquare key={''+i+j} color='#303030' x={i} y={j} hasChecker={false} pickedUpFrom={this.pickedUpFrom} movedPiece={this.movedPiece} didMovePiece={this.didMovePiece} didMoveFrom={this.didMoveFrom} didMoveTo={this.didMoveTo}/>
+                        board[i][j] = <BoardSquare key={''+i+j} color={dark} x={i} y={j} lightColor={light} hasChecker={false} pickedUpFrom={this.pickedUpFrom} movedPiece={this.movedPiece} didMovePiece={this.didMovePiece} didMoveFrom={this.didMoveFrom} didMoveTo={this.didMoveTo}/>
                     }
                 }
                 else{
-                    board[i][j] = <BoardSquare key={''+i+j} color='#e5e5e5' x={i} y={j} hasChecker={false} pickedUpFrom={this.pickedUpFrom} movedPiece={this.movedPiece} didMovePiece={this.didMovePiece} didMoveFrom={this.didMoveFrom} didMoveTo={this.didMoveTo}/>
+                    board[i][j] = <BoardSquare key={''+i+j} color={light} x={i} y={j} lightColor={light} hasChecker={false} pickedUpFrom={this.pickedUpFrom} movedPiece={this.movedPiece} didMovePiece={this.didMovePiece} didMoveFrom={this.didMoveFrom} didMoveTo={this.didMoveTo}/>
                 }
             }
         }

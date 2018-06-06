@@ -24,7 +24,7 @@ export default class BoardSquare extends Component {
   }
 
   onDragOver(e){
-    if(this.props.color !== '#e5e5e5'){
+    if(this.props.color !== this.props.lightColor){
       e.preventDefault();
     }
     else{
@@ -33,7 +33,7 @@ export default class BoardSquare extends Component {
   }
 
   onDrop(e){
-    if(this.props.color !== '#e5e5e5'){
+    if(this.props.color !== this.props.lightColor){
       this.props.movedPiece(true, this.props.x, this.props.y)
       this.setState({hasChecker: true,
                      checkerColor: e.dataTransfer.getData("color")})
