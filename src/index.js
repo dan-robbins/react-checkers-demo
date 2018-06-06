@@ -43,7 +43,7 @@ class CheckersGame extends Component{
         let board = [];
         for(let i = 0; i < boardSize; i++){
             board[i] = [];
-            board[i][boardSize]=<br/>
+            board[i][boardSize]=<br key={'br'+i}/>
         }
         for(let i = 0; i < boardSize; i++){
             for(let j = 0; j < boardSize; j++){
@@ -74,5 +74,5 @@ class CheckersGame extends Component{
         return(<div>{board}</div>)
     }
 }
-ReactDOM.render(<CheckersGame/>, document.getElementById('root'));
+ReactDOM.render(<CheckersGame />, document.getElementById('root'));
 registerServiceWorker();
