@@ -61,7 +61,7 @@ export default class BoardSquare extends Component {
 
   render(){
     let checker;
-    if(this.state.hasChecker){
+    if(this.state.hasChecker && this.state.checkerColor){
       checker = <Checker color={this.state.checkerColor} onDrop={this.handleDrop} pickedUp={this.pickedUp}/>
     }
     else{
