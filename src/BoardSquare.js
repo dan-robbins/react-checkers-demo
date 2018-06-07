@@ -14,7 +14,7 @@ export default class BoardSquare extends Component {
   constructor(props){
     super(props)
     this.state={hasChecker: this.props.hasChecker,
-                checkerColor: this.props.x<3?'black':'red'}
+                checkerColor: this.props.x<this.props.boardSize/2?'black':'red'}
     this.handleDrop = this.handleDrop.bind(this)
     this.pickedUp = this.pickedUp.bind(this)
   }
@@ -68,7 +68,7 @@ export default class BoardSquare extends Component {
          onDragOver={(e)=>this.onDragOver(e)}
          onDrop={(e)=>this.onDrop(e)}
          draggable="false"
-         style={{backgroundColor: this.props.color, left: 12.5*this.props.x + "vmin", top: 12.5*this.props.y + "vmin"}}
+         style={{backgroundColor: this.props.color, width: 100.0/this.props.boardSize + 'vmin', height: 100.0/this.props.boardSize + 'vmin'}}
       >
         {checker}
       </div>

@@ -2,6 +2,7 @@ import React, { Component }  from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import BoardSquare from './BoardSquare'
+import EmptySquare from './EmptySquare'
 import registerServiceWorker from './registerServiceWorker';
 
 class CheckersGame extends Component{
@@ -49,36 +50,43 @@ class CheckersGame extends Component{
         let board = [];
         for(let i = 0; i < boardSize; i++){
             board[i] = [];
-            board[i][boardSize]=<br key={'br'+i}/>
+            board[i][boardSize]=<EmptySquare key={'empty'+i} boardSize={boardSize} x={i} y={boardSize} movedPiece={this.movedPiece} />
+            board[i][boardSize+1]=<br key={'br'+i}/>
         }
+        board[boardSize] = [];
+        for(let i = 0; i <= boardSize; i++){
+            board[boardSize][i]=<EmptySquare key={'bottom'+i} boardSize={boardSize} x={i} y={boardSize} movedPiece={this.movedPiece} />
+        }
+        board[boardSize][boardSize+2]=<br key=""/>
         for(let i = 0; i < boardSize; i++){
             for(let j = 0; j < boardSize; j++){
                 if(i%2===0 && j%2===0){
-                    board[i][j] = <BoardSquare key={''+i+j} color={light} x={i} y={j} lightColor={light} hasChecker={false} pickedUpFrom={this.pickedUpFrom} movedPiece={this.movedPiece} didMovePiece={this.didMovePiece} didMoveFrom={this.didMoveFrom} didMoveTo={this.didMoveTo}/>
+                    board[i][j] = <BoardSquare key={''+i+j} boardSize={boardSize} color={light} x={i} y={j} lightColor={light} hasChecker={false} pickedUpFrom={this.pickedUpFrom} movedPiece={this.movedPiece} didMovePiece={this.didMovePiece} didMoveFrom={this.didMoveFrom} didMoveTo={this.didMoveTo}/>
                 }
                 else if(i%2===0 && j%2===1){
-                    if(i<3 || i>4){
-                        board[i][j] = <BoardSquare key={''+i+j} color={dark} x={i} y={j} lightColor={light} hasChecker={true} pickedUpFrom={this.pickedUpFrom} movedPiece={this.movedPiece} didMovePiece={this.didMovePiece} didMoveFrom={this.didMoveFrom} didMoveTo={this.didMoveTo}/>
+                    if(i<Math.ceil(boardSize/3.0) || i>=Math.floor((2*boardSize)/3)){
+                        board[i][j] = <BoardSquare key={''+i+j} boardSize={boardSize} color={dark} x={i} y={j} lightColor={light} hasChecker={true} pickedUpFrom={this.pickedUpFrom} movedPiece={this.movedPiece} didMovePiece={this.didMovePiece} didMoveFrom={this.didMoveFrom} didMoveTo={this.didMoveTo}/>
                     }
                     else{
-                        board[i][j] = <BoardSquare key={''+i+j} color={dark} x={i} y={j} lightColor={light} hasChecker={false} pickedUpFrom={this.pickedUpFrom} movedPiece={this.movedPiece} didMovePiece={this.didMovePiece} didMoveFrom={this.didMoveFrom} didMoveTo={this.didMoveTo}/>
+                        board[i][j] = <BoardSquare key={''+i+j} boardSize={boardSize} color={dark} x={i} y={j} lightColor={light} hasChecker={false} pickedUpFrom={this.pickedUpFrom} movedPiece={this.movedPiece} didMovePiece={this.didMovePiece} didMoveFrom={this.didMoveFrom} didMoveTo={this.didMoveTo}/>
                     }
                 }
                 else if(i%2===1 && j%2===0){
-                    if(i<3 || i>4){
-                        board[i][j] = <BoardSquare key={''+i+j} color={dark} x={i} y={j} lightColor={light} hasChecker={true} pickedUpFrom={this.pickedUpFrom} movedPiece={this.movedPiece} didMovePiece={this.didMovePiece} didMoveFrom={this.didMoveFrom} didMoveTo={this.didMoveTo}/>
+                    if(i<Math.ceil(boardSize/3.0) || i>=Math.floor((2*boardSize)/3)){
+                        board[i][j] = <BoardSquare key={''+i+j} boardSize={boardSize} color={dark} x={i} y={j} lightColor={light} hasChecker={true} pickedUpFrom={this.pickedUpFrom} movedPiece={this.movedPiece} didMovePiece={this.didMovePiece} didMoveFrom={this.didMoveFrom} didMoveTo={this.didMoveTo}/>
                     }
                     else{
-                        board[i][j] = <BoardSquare key={''+i+j} color={dark} x={i} y={j} lightColor={light} hasChecker={false} pickedUpFrom={this.pickedUpFrom} movedPiece={this.movedPiece} didMovePiece={this.didMovePiece} didMoveFrom={this.didMoveFrom} didMoveTo={this.didMoveTo}/>
+                        board[i][j] = <BoardSquare key={''+i+j} boardSize={boardSize} color={dark} x={i} y={j} lightColor={light} hasChecker={false} pickedUpFrom={this.pickedUpFrom} movedPiece={this.movedPiece} didMovePiece={this.didMovePiece} didMoveFrom={this.didMoveFrom} didMoveTo={this.didMoveTo}/>
                     }
                 }
                 else{
-                    board[i][j] = <BoardSquare key={''+i+j} color={light} x={i} y={j} lightColor={light} hasChecker={false} pickedUpFrom={this.pickedUpFrom} movedPiece={this.movedPiece} didMovePiece={this.didMovePiece} didMoveFrom={this.didMoveFrom} didMoveTo={this.didMoveTo}/>
+                    board[i][j] = <BoardSquare key={''+i+j} boardSize={boardSize} color={light} x={i} y={j} lightColor={light} hasChecker={false} pickedUpFrom={this.pickedUpFrom} movedPiece={this.movedPiece} didMovePiece={this.didMovePiece} didMoveFrom={this.didMoveFrom} didMoveTo={this.didMoveTo}/>
                 }
             }
         }
         return(<div>{board}</div>)
     }
 }
+
 ReactDOM.render(<CheckersGame />, document.getElementById('root'));
 registerServiceWorker();
