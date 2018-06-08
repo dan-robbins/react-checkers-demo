@@ -45,6 +45,10 @@ export default class BoardSquare extends Component {
 
     }
 
+    onDoubleClick(e) {
+        this.setState({hasChecker: true})
+    }
+
     pickedUp() {
         this.props.pickedUpFrom(this.props.x, this.props.y)
     }
@@ -63,7 +67,7 @@ export default class BoardSquare extends Component {
         } else {
             checker = null;
         }
-        return (<div className="board-square" onDragOver={(e) => this.onDragOver(e)} onDrop={(e) => this.onDrop(e)} draggable="false" style={{
+        return (<div className="board-square" onDragOver={(e) => this.onDragOver(e)} onDrop={(e) => this.onDrop(e)} onDoubleClick={(e) => this.onDoubleClick(e)} draggable="false" style={{
                 backgroundColor: this.props.color,
                 width: 100.0 / this.props.boardSize + 'vmin',
                 height: 100.0 / this.props.boardSize + 'vmin'
